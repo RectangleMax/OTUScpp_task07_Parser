@@ -1,7 +1,7 @@
 #include <iostream>
 #include "CmdHandler.h"
 #include "SubOutput.h"
-
+#include <ctime>
 
 int main(int argc, char** argv) {
     if (argc == 1) {
@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
 
 
     for (std::string cmd; std::getline(std::cin, cmd);){
-        hand_.process(cmd);
+        hand_.process(cmd, time(0));
     }
     return 0;
 }

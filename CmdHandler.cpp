@@ -7,7 +7,7 @@ CmdHandler::~CmdHandler() {
     cmd_list.clear();
 }
 
-void CmdHandler::process(const std::string& cmd){
+void CmdHandler::process(const std::string& cmd, time_t cmd_time) {
     if (cmd == "{") {
         if (!bracket_counter++) { 
             updateSub();
@@ -21,6 +21,8 @@ void CmdHandler::process(const std::string& cmd){
         }
         return;
     } 
+    if (cmd_list.empty())
+        firstCmdTime = cmd_time;
     cmd_list.push_back(cmd);
     if (!bracket_counter) {
         if (cmd_list.size() == N_pack) {
@@ -32,6 +34,6 @@ void CmdHandler::process(const std::string& cmd){
 
 void CmdHandler::updateSub(){
     for (auto it = sub_ptr_list.begin(); it != sub_ptr_list.end(); ++it) {    
-        (*it)->update(cmd_list);
+        (*it)->update(cmd_list, firstCmdTime);
     }
 }

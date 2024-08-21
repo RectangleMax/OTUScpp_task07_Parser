@@ -13,11 +13,11 @@ void SubOutputBase::outputFormat(std::ostream& ostr, const std::list<std::string
     ostr << std::endl;
 }
 
-void SubOutputCout::update(const std::list<std::string>& cmd_list) {
+void SubOutputCout::update(const std::list<std::string>& cmd_list, time_t) {
     outputFormat(std::cout, cmd_list);
 }
 
-void SubOutputFile::update(const std::list<std::string>& cmd_list) {
-    std::ofstream file("bulk" + std::to_string(time(0)) + ".txt");
+void SubOutputFile::update(const std::list<std::string>& cmd_list, time_t time_) {
+    std::ofstream file("bulk" + std::to_string(time_) + ".log");
     outputFormat(file, cmd_list);
 }

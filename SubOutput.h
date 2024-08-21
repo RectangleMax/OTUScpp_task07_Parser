@@ -8,14 +8,14 @@
 struct SubOutputBase{
     void outputFormat(std::ostream&, const std::list<std::string>&);
 // почему не компилиутеся без "=0"?
-    virtual void update(const std::list<std::string>&) = 0;
+    virtual void update(const std::list<std::string>&, time_t) = 0;
     virtual ~SubOutputBase() {}
 };
 
 struct SubOutputCout : SubOutputBase {
-    void update(const std::list<std::string>&) override;
+    void update(const std::list<std::string>&, time_t) override;
 };
 
 struct SubOutputFile : SubOutputBase {
-    void update(const std::list<std::string>&) override;
+    void update(const std::list<std::string>&, time_t) override;
 };
