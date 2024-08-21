@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - run: g++ main.cpp SubOutput.cpp CmdHandler.cpp -o ./bulk_1.0-Linux/usr/bin/bulk -std=c++11
+      - run: g++ main.cpp SubOutput.cpp CmdHandler.cpp -o ./bulk_1.1-Linux/usr/bin/bulk -std=c++11
       - run: dpkg-deb --build ./bulk_1.1-Linux
       - name: Create Release
         id: create_release
